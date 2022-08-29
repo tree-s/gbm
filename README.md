@@ -12,4 +12,4 @@ Features:
 5. Filtering tags
 6. Darkmode
 
-You can connect use it live [here](http://str.ath.cx/) and use your own google account.
+You can use it live [here](http://str.ath.cx/) using your own google account.
