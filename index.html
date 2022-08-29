@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Google Bookmark Manager</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link id="dark-theme-style" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css" integrity="sha384-cu7JuHifKOiMVER1OSMjuBV/vATSBP7dazbyVra6gBV3yOUs4Ptus8PIUUvESwg2" crossorigin="anonymous">
+    <?!= include('style'); ?>
+  </head>
+  <body data-spy="scroll" data-target="#tag-nav">
+    <div class="container">
+      <div class="row">
+        <!-- Tag Navigation -->
+        <div class="col-md-2">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Filter bookmarks" id="filter_box">
+          </div>
+          <p class="center">
+            <a id="t_showall" href="#">Show All</a> | <a id="t_shownone" href="#">Show None</a>
+          </p>
+          <hr/>
+          <ul class="nav nav-pills nav-stacked" id="tags">
+          </ul>
+        </div>
+        <!-- Bookmark list -->
+        <div class="col-md-9" id="bookmarklist">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title pull-left">Dark Mode</h3>
+              <div class="btn-group pull-right" id="g0" role="group">
+                <button id="btn_dark" class="btn btn-default">Toggle</button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <!-- Add a new Bookmark -->
+          <div id="n" class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title pull-left">Add Link</h3>
+              <div class="btn-group pull-right" id="g1" role="group">
+                <button id="btn_save" class="btn btn-default">Save</button>
+                <button id="btn_discard" class="btn btn-default">Discard</button>
+                <button id="btn_hide" class="btn btn-default">Hide</button>
+              </div>
+              <div class="btn-group pull-right" id="g2" role="group">
+                <button id="btn_show" class="btn btn-default">Show</button>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+              <form role="form" id="n_form" autocomplete="off">
+                <div class="form-group"> <input type="text" class="form-control" id="n_link" name="link" placeholder="Link" required> </div>
+                <div class="form-group"> <input type="text" class="form-control" id="n_description" name="description" placeholder="Description"> </div>
+                <div class="form-group"> <input type="text" class="form-control tokenfield" id="n_tags" name="tags" data-role="tagsinput" placeholder="Tags"> </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?!= include('scripts'); ?>
+  </body>
+</html>
