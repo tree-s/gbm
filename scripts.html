@@ -21,7 +21,7 @@
     </div>
     <div class="panel-body detail">
       <span class="pull-left">
-        <img src="{{favicon}}" height="16" /> <a target="_blank" onclick="copyUrl('{{link}}');">{{trimString link 50}}</a>  {{#each tags}} <span class="label label-default">{{this}}</span> {{/each}}
+        <img src="{{favicon}}" height="16" /> <a href="{{link}}" target="_blank" onclick="copyUrl('{{link}}');">{{trimString link 50}}</a>  {{#each tags}} <span class="label label-default">{{this}}</span> {{/each}}
       </span>
       <span class="pull-right">
         <a class="l_edit" data-id="{{id}}" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a href="#" class="l_delete" data-id="{{id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
@@ -37,9 +37,16 @@
   const DARK_THEME_PATH = "https://bootswatch.com/3/cyborg/bootstrap.min.css";
   const DARK_STYLE_LINK = document.getElementById("dark-theme-style");
 
-  let isDark = LOCAL_META_DATA && LOCAL_META_DATA.isDark;
+  let isDark;
 
-  // check if user has already selected dark theme earlier
+  if (LOCAL_META_DATA) {
+    // Use system/browser preference
+    isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Save the preference so it persists on reload
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({ isDark }));
+  }
+
+  // Apply the theme
   if (isDark) {
     enableDarkTheme();
   } else {
